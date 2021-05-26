@@ -1,15 +1,12 @@
 const router = require('express').Router()
 const LoginController = require('../login-controller');
 
-// const { showSignUpPage } = require('../login-controller');
-
-//
 
 // log-in Route - refers to layouts
 router
     .route('/login')
         .get(LoginController.showSignUpPage)
-        // .post(LoginController.login);
+        .post(LoginController.login);
 
 // signup Route - refers to layouts
 router
