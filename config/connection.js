@@ -1,3 +1,4 @@
+// Connects to SQL database using sequelize
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
@@ -9,12 +10,11 @@ if (process.env.JAWSDB_URL) {
     process.env.DB_USER,
     process.env.DB_PASSWORD,
     {
-      host: process.env.DB_HOST,
+      host: 'localhost',
       dialect: 'mysql',
       port: 3306
     }
   );
 }
-
 
 module.exports = sequelize;
