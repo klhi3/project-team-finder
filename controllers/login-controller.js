@@ -3,9 +3,9 @@ const UserService = require('../Services/user-service');
 module.exports = {
   showSignUpPage: async (req, res) => {
     res.render('signup');
+    // res.json("Showsignuppage");
   },
   signup: async (req, res) => {
-    console.log('signup')
     try {
       delete req.session.user;
       const user = await UserService.signup(req.body.username, req.body.password);
