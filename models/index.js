@@ -1,4 +1,4 @@
-// Contains sequelize models for dtabase
+// Contains sequelize models for database
 const User = require('./User');
 const Project = require('./Project');
 const Skill = require('./Skill');
@@ -22,6 +22,5 @@ Project.belongsToMany(User, {
   // Define an alias for when data is retrieved
   as: 'project_team'
 });
-
 
 module.exports = { User, Project, Skill };
