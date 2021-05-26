@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const LoginController = require('../Controllers/login-controller');
+const LoginController = require('../login-controller');
 
 // log-in Route - refers to layouts
 router
