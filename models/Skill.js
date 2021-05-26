@@ -15,6 +15,27 @@ Skill.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+        unique: false
+      }
+    },
+    project_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'project',
+        key: 'id',
+        unique: false
+      }
+    }
+
   },
   {
     sequelize,
