@@ -1,51 +1,53 @@
-const loginFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const email = document.querySelector('#email-login').value.trim();
-    const password = document.querySelector('#password-login').value.trim();
-  
-    if (email && password) {
-      const response = await fetch('/api/users/login', {
-        method: 'POST',
-        body: JSON.stringify({ email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
+const UserService = require('../Services/user-service');
+
+module.exports = {
+  showSignUpPage: async (req, res) => {
+    res.render('signup');
+  },
+  signup: async (req, res) => {
+    console.log('signup')
+    try {
+      delete req.session.user;
+      const user = await UserService.signup(req.body.username, req.body.password);
+
+      if(user) {
+        // login successful
+        const redirectTo = req.query.redirectTo || '/?signedup';
+        req.session.user = user;
+        res.redirect(redirectTo);
       } else {
-        alert('Failed to log in.');
+        // login failed
+        res.redirect("/signup?error=login+unsuccessful");
       }
+    } catch (err) {
+      console.log(`LoginController.login(): Error loging in "${username}" with pass "${password}"`, err)
     }
-  };
-  
-  const signupFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const username = document.querySelector('#username-signup').value.trim();
-    const email = document.querySelector('#email-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
-  
-    if (username && email && password) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ username, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/');
+  },
+  showLoginPage: async (req, res) => {
+    console.log('showLoginPage')
+    res.render('login')
+  },
+  login: async (req, res) => {
+    console.log('login')
+    try {
+      delete req.session.user;
+      const user = await UserService.login(req.body.username, req.body.password);
+
+      if(user) {
+        // login successful
+        const redirectTo = req.query.redirectTo || '/?loggedin';
+        req.session.user = user;
+        res.redirect(redirectTo);
       } else {
-        alert('Failed to sign up.');
+        // login failed
+        res.redirect("/login?error=login+unsuccessful");
       }
+    } catch (err) {
+      console.log(`LoginController.login(): Error loging in "${username}" with pass "${password}"`, err)
     }
-  };
-  
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
-  
-  document
-    .querySelector('.signup-form')
-    .addEventListener('submit', signupFormHandler);
-  
+  },
+  logout: (req, res) => {
+    delete req.session.user;
+    res.redirect('/?loggedout');
+  }
+};
