@@ -1,0 +1,22 @@
+[
+  {
+    "name": "aaa",
+    "starting_date": "May 22, 2021 09:00:00",
+    "ending_date": "July 22, 2021 22:00:00"
+  },
+  {
+    "name": "aaa",
+    "starting_date": "June 22, 2021 09:00:00",
+    "ending_date": "August 22, 2021 22:00:00"
+  },
+  {
+    "name": "bbb",
+    "starting_date": "July 22, 2020 09:00:00",
+    "ending_date": "September 22, 2021 22:00:00"
+  },
+  {
+    "name": "ccc",
+    "starting_date": "June 22, 2021 09:00:00",
+    "ending_date": "September 22, 2021 22:00:00"
+  }
+]
