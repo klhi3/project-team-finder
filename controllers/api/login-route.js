@@ -1,19 +1,21 @@
-const router = require('express').Router();
-const { User } = require('../../models');
+const router = require('express').Router()
+const LoginController = require('../Controllers/login-controller');
 
-router.get('/', async (req, res) => {
-  try {
-    const userData = await User.create(req.body);
+// log-in Route - refers to layouts
+router
+    .route('/login')
+        .get(LoginController.showLoginPage)
+        .post(LoginController.login);
 
-    req.session.save(() => {
-      req.session.user_id = userData.id;
-      req.session.logged_in = true;
+// signup Route - refers to layouts
+router
+    .route('/signup')
+        .get(LoginController.showSignUpPage)
+        .post(LoginController.signup);
 
-      res.status(200).json(userData);
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
+router
+    .route('/logout')
+        .get(LoginController.logout)
+        .post(LoginController.logout);
 
-module.exports = router;
+module.exports = router
