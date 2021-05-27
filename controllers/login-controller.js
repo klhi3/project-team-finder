@@ -38,7 +38,7 @@ module.exports = {
         const redirectTo = req.query.redirectTo || '/?loggedin';
         req.session.user = user;
         res.redirect(redirectTo);
-        // res.json("logged in");
+        res.json("logged in");
       } else {
         // login failed
         res.redirect("/login?error=login+unsuccessful");
