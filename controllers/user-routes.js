@@ -6,19 +6,18 @@ router.get('/', async (req, res) => {
   try {
     // RENDERS HANDLEBAR VIEWS
     const userData = await User.findAll({
-      // include: [
-      //   {
-      //     model: Skill,
-      //     attributes: ['name'],
-      //   },
-      //   {
-      //     model: Project,
-      //     attributes: ['name'],
-      //   },
-      // ],
+      include: [
+        {
+          model: Skill,
+          attributes: ['name'],
+        },
+        // {
+        //   model: Project,
+        //   attributes: ['name'],
+        // },
+      ],
     });
 
-    console.log(userData);
     const users = userData.map((user) =>
       user.get({ plain: true })
     );
