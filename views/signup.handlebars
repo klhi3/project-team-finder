@@ -103,7 +103,7 @@ body {
 </head>
 <body>
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="">
 		<h2>Register</h2>
 		<p class="hint-text">Create your account. It's free and only takes a minute.</p>
         {{!-- <div class="form-group">
@@ -113,28 +113,31 @@ body {
 			</div>        	
         </div> --}}
 		<div class="form-group">
-        	<input type="Username" class="form-control" name="Username" placeholder="Username" required="required">
+        	<input id="username-signup" type="Username" class="form-control" name="Username" placeholder="Username" required="required">
         </div>
         <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        	<input id="email-signup" type="email" class="form-control" name="email" placeholder="Email" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input id="password-signup" type="password" class="form-control" name="password" placeholder="Password" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
         </div>
 		<div class="form-group">
 			<div class="row">
-				<div class="col"><input type="text" class="form-control" name="city" placeholder="City" required="required"></div>
-				<div class="col"><input type="text" class="form-control" name="state" placeholder="State" required="required"></div>
+				<div class="col"><input id="city-signup" type="text" class="form-control" name="city" placeholder="City" required="required"></div>
+				<div class="col"><input id="state-signup" type="text" class="form-control" name="state" placeholder="State" required="required"></div>
 			</div>        	
         </div>
 		<div class="form-group">
-            <button type="submit" class="btn btn-success btn-lg btn-block" id="signupBtn">Register Now</button>
+            <button class="btn btn-success btn-block" id="signupBtn">Register Now</button>
         </div>
     </form>
-	<div class="text-center">Already have an account? <a href="/api/login/login">Sign in</a></div>
+	<div class="text-center">Already have an account? <a href="/api/login/">Sign in</a></div>
 </div>
 </body>
 </html>
+
+<!-- get script to handle login button -->
+<script src="/js/signup.js"></script>

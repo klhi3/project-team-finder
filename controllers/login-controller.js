@@ -34,6 +34,11 @@ module.exports = {
       const user = await UserService.login(req.body.username, req.body.password);
       // res.send(user);
       if(user) {
+        // Create session, saved logged in as true
+        req.session.save(() => {
+          // TODO: Once the user successfully logs in, set up sessions with the 'loggedIn' variable
+          req.session.loggedIn = true;
+        });
         // login successful
         const redirectTo = req.query.redirectTo || '/?loggedin';
         req.session.user = user;
@@ -48,7 +53,13 @@ module.exports = {
     }
   },
   logout: (req, res) => {
-    delete req.session.user;
-    res.redirect('/?loggedout');
+    // When the user logs out, the session is destroyed
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    } else {
+      res.status(404).end();
+    }
   }
 };
