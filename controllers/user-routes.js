@@ -1,12 +1,32 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Skill } = require('../models');
 
 // Render Homepage
 router.get('/', async (req, res) => {
   try {
     // RENDERS HANDLEBAR VIEWS
-    // enter handlebars view file for users here
-    res.render('');
+    const userData = await User.findAll({
+      // include: [
+      //   {
+      //     model: Skill,
+      //     attributes: ['name'],
+      //   },
+      //   {
+      //     model: Project,
+      //     attributes: ['name'],
+      //   },
+      // ],
+    });
+
+    console.log(userData);
+    const users = userData.map((user) =>
+      user.get({ plain: true })
+    );
+
+    //call views/user.handlebars
+    res.render('users', {
+      users,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
