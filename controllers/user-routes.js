@@ -5,19 +5,20 @@ const { Project, User, Skill } = require('../models');
 router.get('/', async (req, res) => {
   try {
     // RENDERS HANDLEBAR VIEWS
-    const useryData = await User.findAll({
-      include: [
-        {
-          model: Skill,
-          attributes: ['name'],
-        },
-        {
-          model: Project,
-          attributes: ['name'],
-        },
-      ],
+    const userData = await User.findAll({
+      // include: [
+      //   {
+      //     model: Skill,
+      //     attributes: ['name'],
+      //   },
+      //   {
+      //     model: Project,
+      //     attributes: ['name'],
+      //   },
+      // ],
     });
 
+    console.log(userData);
     const users = userData.map((user) =>
       user.get({ plain: true })
     );
