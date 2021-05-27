@@ -1,3 +1,3 @@
-DROP DATABASE IF EXISTS project_db;
+DROP DATABASE IF EXISTS teamfinder_db;
 
-CREATE DATABASE project_db;
+CREATE DATABASE teamfinder_db;

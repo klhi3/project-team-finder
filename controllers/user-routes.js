@@ -5,8 +5,22 @@ const { Project, User } = require('../models');
 router.get('/', async (req, res) => {
   try {
     // RENDERS HANDLEBAR VIEWS
-    // enter handlebars view file for users here
-    res.render('');
+    const useryData = await User.findAll({
+      include: [
+        {
+          model: Skill,
+          attributes: ['name'],
+        },
+      ],
+    });
+
+    const users = userData.map((user) =>
+      user.get({ plain: true })
+    );
+
+    res.render('users', {
+      users,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
