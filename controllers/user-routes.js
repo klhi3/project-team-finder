@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Skill } = require('../models');
 
 // Render Homepage
 router.get('/', async (req, res) => {
@@ -11,6 +11,10 @@ router.get('/', async (req, res) => {
           model: Skill,
           attributes: ['name'],
         },
+        {
+          model: Project,
+          attributes: ['name'],
+        },
       ],
     });
 
@@ -18,6 +22,7 @@ router.get('/', async (req, res) => {
       user.get({ plain: true })
     );
 
+    //call views/user.handlebars
     res.render('users', {
       users,
     });
