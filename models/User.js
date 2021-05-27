@@ -35,6 +35,14 @@ User.init(
         len: [8],
       },
     },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     hooks: {
