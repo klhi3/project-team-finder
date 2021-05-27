@@ -18,7 +18,6 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  console.log(skillData);
   const skills = await Skill.bulkCreate(skillData, {
     individualHooks: true,
     returning: true,
