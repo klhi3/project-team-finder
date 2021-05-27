@@ -5,7 +5,7 @@ const LoginController = require('../login-controller');
 // log-in Route - refers to layouts
 router
     .route('/login')
-        .get(LoginController.showSignUpPage)
+        .get(LoginController.showLoginPage)
         .post(LoginController.login);
 
 // signup Route - refers to layouts
