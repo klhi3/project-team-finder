@@ -1,4 +1,4 @@
-// const UserService = require('../Services/user-service');
+const UserService = require('./Services/user-service');
 
 module.exports = {
   showSignUpPage: async (req, res) => {
@@ -8,8 +8,8 @@ module.exports = {
   signup: async (req, res) => {
     try {
       delete req.session.user;
-      const user = await UserService.signup(req.body.username, req.body.password);
-
+      const user = await UserService.signup(req.body.username, req.body.password, req.body.email, req.body.city, req.body.state);
+      res.send(user);
       if(user) {
         // login successful
         const redirectTo = req.query.redirectTo || '/?signedup';
@@ -32,12 +32,13 @@ module.exports = {
     try {
       delete req.session.user;
       const user = await UserService.login(req.body.username, req.body.password);
-
+      // res.send(user);
       if(user) {
         // login successful
         const redirectTo = req.query.redirectTo || '/?loggedin';
         req.session.user = user;
         res.redirect(redirectTo);
+        // res.json("logged in");
       } else {
         // login failed
         res.redirect("/login?error=login+unsuccessful");

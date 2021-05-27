@@ -6,6 +6,7 @@ router.get('/', async (req, res) => {
   try {
     // RENDERS HANDLEBAR VIEWS
     const userData = await User.findAll({
+<<<<<<< HEAD
       include: [
         {
           model: Skill,
@@ -16,6 +17,18 @@ router.get('/', async (req, res) => {
         //   attributes: ['name'],
         // },
       ],
+=======
+      // include: [
+      //   {
+      //     model: Skill,
+      //     attributes: ['name'],
+      //   },
+      //   {
+      //     model: Project,
+      //     attributes: ['name'],
+      //   },
+      // ],
+>>>>>>> main
     });
 
     console.log(userData);
