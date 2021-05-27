@@ -23,6 +23,9 @@ const seedDatabase = async () => {
     returning: true,
   });
 
+  // const skills = await Skill.bulkCreate(skillData);
+
+
   process.exit(0);
 };
 
