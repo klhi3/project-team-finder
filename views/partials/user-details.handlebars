@@ -1,13 +1,16 @@
-<div>{{name}}</div>
+    <div class="col "> 
+        <img src="./images/{{id}}.png" alt="" width="100" height="100"/>
+    </div>
 
-
-
-<div>
-    <header>{{name}}</header>
-    <img src="{{id}}.png" alt="" />
-    {{#each skills as |skill|}}
-    {{name}}
-    {{/each}}
-  </a>
-
-</div>
+    <div class="col"><h2>{{name}}</h2></div>
+    <div class="col">
+        {{#each skills as |skill|}}
+        {{name}}
+        {{/each}}
+   </div>
+    <div class="col">
+        {{#each user_projects as |project|}}
+        {{name}}
+        {{/each}}
+    </div>
+    <div class="w-100"></div>

@@ -39,6 +39,9 @@ app.use(express.urlencoded({ extended: true }));
 // Allows files to be loaded from public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
+//display images
+app.use(express.static(path.join(__dirname + '/images')));
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
