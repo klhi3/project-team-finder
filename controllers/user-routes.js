@@ -11,17 +11,25 @@ router.get('/', async (req, res) => {
           model: Skill,
           attributes: ['name'],
         },
-        // {
-        //   model: Project,
-        //   attributes: ['name'],
-        // },
+        {
+          model: Project,
+          through: Skill,
+          as: "user_projects"
+        },
       ],
     });
 
-    const users = userData.map((user) =>
-      user.get({ plain: true })
+    const users = userData.map((user) => {
+      // console.log("user : "+user.name+" ======");
+      // user.skills.map((skill) => console.log(skill.name));
+      // user.user_projects.map((project) => console.log(project.name));
+
+      user.get({ plain: true })   
+    }
     );
 
+    console.log(">>>>>>>>>>>>>>")
+    console.log("users="+users);
     //call views/user.handlebars
     res.render('users', {
       users,
