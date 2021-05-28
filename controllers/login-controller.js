@@ -1,4 +1,4 @@
-const UserService = require('./services/user-service');
+const UserService = require('./services/user-service.js');
 
 module.exports = {
   showSignUpPage: async (req, res) => {
