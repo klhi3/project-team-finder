@@ -1,16 +1,36 @@
 const router = require('express').Router();
-const { Project, User } = require('../models');
+const { Project, User, Skill } = require('../models');
 
 // Render Homepage
 router.get('/', async (req, res) => {
   try {
-    // RENDERS HANDLEBAR VIEWS
-    // enter handlebars view file for users here
-    res.render('projects');
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
+      // RENDERS HANDLEBAR VIEWS
+      const projectData = await Project.findAll({
+        include: [
+          {
+            model: Skill,
+            attributes: ['name'],
+          },
+          {
+            model: User,
+            through: Skill,
+            as: "project_team"
+          },
+        ],
+      });
+  
+  
+      const projects = projectData.map((p) => 
+          p.get({ plain: true })       
+      );
+  
+      res.render('projects', {
+        projects,
+      });
+   } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+   }
 });
 
 module.exports = router;
