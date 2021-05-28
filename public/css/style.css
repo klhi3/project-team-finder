@@ -2,6 +2,11 @@ body{
     background-color: rgb(233,236,239);
 }
 
+.nav{
+   margin: 0px 0px 0px 12px;
+}
+
+
 .user-container{
     background-color: rgb(233,236,239);
 }
