@@ -1,3 +1,15 @@
-{{#each users as |user|}}
-{{> user-details}}
-{{/each}}
+<br>
+<div class="container left-align">
+ <div class="d-flex justify-content-start">
+    <div class="row left-align">
+        <div class="col"><h4>Picture</h3></div>
+        <div class="col"><h4>Name</h3></div>
+        <div class="col"><h4>Skill</h3></div>
+        <div class="col"><h5>Project</h3></div>
+        <div class="w-100"></div>
+        {{#each users as |user|}}
+            {{> user-details}}
+        {{/each}}
+    </div>
+  </div>   
+</div>
