@@ -28,7 +28,6 @@ module.exports = {
     res.render('login')
   },
   login: async (req, res) => {
-    console.log('login')
     try {
       delete req.session.user;
       const user = await UserService.login(req.body.username, req.body.password);
@@ -38,6 +37,7 @@ module.exports = {
         req.session.save(() => {
           // TODO: Once the user successfully logs in, set up sessions with the 'loggedIn' variable
           req.session.loggedIn = true;
+          res.status(200).json(user);
         });
         // login successful
         const redirectTo = req.query.redirectTo || '/?loggedin';
