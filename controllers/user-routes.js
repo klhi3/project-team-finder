@@ -20,15 +20,16 @@ router.get('/', async (req, res) => {
     });
 
     const users = userData.map((user) => {
-      // console.log(user);
+      // console.log("user : "+user.name+" ======");
       // user.skills.map((skill) => console.log(skill.name));
+      // user.user_projects.map((project) => console.log(project.name));
 
       user.get({ plain: true })   
     }
     );
 
-    
-    console.log(users);
+    console.log(">>>>>>>>>>>>>>")
+    console.log("users="+users);
     //call views/user.handlebars
     res.render('users', {
       users,
