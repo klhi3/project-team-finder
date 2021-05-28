@@ -3,9 +3,10 @@ body{
     margin-top:20px;
 }
 
-table{
-    display:block;
+.user-container{
+    background-color: #e9ecef;
 }
+
 .file_manager .file a:hover .hover,
 .file_manager .file .file-name small{
     display: block
