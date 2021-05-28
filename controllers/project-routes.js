@@ -6,7 +6,7 @@ router.get('/', async (req, res) => {
   try {
     // RENDERS HANDLEBAR VIEWS
     // enter handlebars view file for users here
-    res.render('');
+    res.render('projects');
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
