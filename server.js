@@ -4,6 +4,11 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
+// Import the custom helper methods
+const helpers = require('./utils/helpers');
+// Incorporate the custom helper methods
+const hbs = exphbs.create({ helpers });
+
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 // const helpers = require('./utils/helpers');
@@ -11,7 +16,7 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({});
+// const hbs = exphbs.create({});
 
 // set handlebars as the view engine
 
@@ -45,5 +50,5 @@ app.use(express.static(path.join(__dirname + '/images')));
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log('Now listening on '+PORT));
 });

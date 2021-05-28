@@ -1,13 +1,16 @@
 
-    <div class="col"><h2>{{name}}</h2></div>
-    <div class="col">
-        {{#each skills as |skill|}}
-        {{name}}
-        {{/each}}
-   </div>
-    <div class="col">
-        {{#each project_team as |user|}}
-        {{name}}
-        {{/each}}
-    </div>
-    <div class="w-100"></div>
+    <tr>
+      <th scope="row">{{name}}</th>
+      <td>{{#each skills as |skill|}}
+          {{name}}
+          {{/each}}
+     </td>
+      <td>{{#each project_team as |user|}}
+          {{name}}
+          {{/each}}
+     </td>
+        <td>{{format_date starting_date}}</td>
+        <td>{{format_date ending_date}}</td>
+    </tr>
+
+      {{!-- <div class="w-100"></div> --}}
