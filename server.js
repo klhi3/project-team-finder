@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const compression = require('compression')
 
 // Import the custom helper methods
 const helpers = require('./utils/helpers');
@@ -24,6 +25,8 @@ app.set('views', path.join(__dirname, 'views'));
 // app.engine('handlebars', exphbs());
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+// use compression
+app.use(compression());
 
 // Enables sessions and cookies
 const sess = {
